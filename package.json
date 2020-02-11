@@ -11,7 +11,7 @@
     "seed": "node -r esm prisma/seed"
   },
   "dependencies": {
-    "@prisma/photon": "2.0.0-preview019",
+    "@prisma/photon": "2.0.0-preview021",
     "apollo-server": "2.9.13",
     "esm": "^3.2.25",
     "graphql": "14.5.8",

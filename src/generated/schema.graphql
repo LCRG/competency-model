@@ -120,8 +120,12 @@ type Issuer {
 }
 
 type Query {
-  getAllCourses: [Course!]!
-  getCourseByID(id: ID): Course
+  Competencies: [Competency!]!
+  Competency(id: ID): Competency
+  Course(id: ID): Course
+  Courses: [Course!]!
+  filterCompetencies(searchString: String): [Competency!]!
+  filterCourses(searchString: String): [Course!]!
 }
 
 type Resource {

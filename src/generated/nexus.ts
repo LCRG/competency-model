@@ -194,8 +194,12 @@ export interface NexusGenFieldTypes {
     url: string; // String!
   }
   Query: { // field return type
-    getAllCourses: NexusGenRootTypes['Course'][]; // [Course!]!
-    getCourseByID: NexusGenRootTypes['Course'] | null; // Course
+    Competencies: NexusGenRootTypes['Competency'][]; // [Competency!]!
+    Competency: NexusGenRootTypes['Competency'] | null; // Competency
+    Course: NexusGenRootTypes['Course'] | null; // Course
+    Courses: NexusGenRootTypes['Course'][]; // [Course!]!
+    filterCompetencies: NexusGenRootTypes['Competency'][]; // [Competency!]!
+    filterCourses: NexusGenRootTypes['Course'][]; // [Course!]!
   }
   Resource: { // field return type
     createdAt: any; // DateTime!
@@ -266,8 +270,17 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
-    getCourseByID: { // args
+    Competency: { // args
       id?: string | null; // ID
+    }
+    Course: { // args
+      id?: string | null; // ID
+    }
+    filterCompetencies: { // args
+      searchString?: string | null; // String
+    }
+    filterCourses: { // args
+      searchString?: string | null; // String
     }
   }
   Resource: {

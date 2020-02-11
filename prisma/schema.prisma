@@ -8,26 +8,26 @@ generator photon {
 }
 
 enum AssociationType {
-    ExactMatchOf
-    Precedes
-    IsChildOf
-    IsParentOf
-    HasSkillLevel
-    ReplacedBy
-    IsPartOf
-    Exemplar
-    IsRelatedTo
-    IsPeerOf
+  ExactMatchOf
+  Precedes
+  IsChildOf
+  IsParentOf
+  HasSkillLevel
+  ReplacedBy
+  IsPartOf
+  Exemplar
+  IsRelatedTo
+  IsPeerOf
 }
 
 enum EntityType {
-    Basic
-    Competency
-    Course
-    Degree
-    Certificate
-    Assessment
-    CoCurricular
+  Basic
+  Competency
+  Course
+  Degree
+  Certificate
+  Assessment
+  CoCurricular
 }
 
 enum BloomLevel {
@@ -41,105 +41,119 @@ enum BloomLevel {
 }
 
 model Association {
-    id        String   @default(cuid()) @id
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    type String
-    associationType AssociationType
-    entityType EntityType
-    entityId String
-    additionalProperties String?
+  id                   String          @default(cuid()) @id
+  createdAt            DateTime        @default(now())
+  updatedAt            DateTime        @updatedAt
+  type                 String
+  associationType      AssociationType
+  entityType           EntityType
+  entityId             String
+  additionalProperties String?
+}
+
+model Certificate {
+  id                   String        @default(cuid()) @id
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  type                 EntityType
+  name                 String
+  description          String?
+  defaultCredits       String?
+  defaultPoints        String?
+  sourcedId            String?
+  alternativeLabel     String?
+  additionalProperties String?
+  level                String?
+  areaOfStudy          String?
+  issuer               Issuer        @relation(name: "CertificateIssuer")
+  endorsements         Issuer[]      @relation(name: "CertificateEndorsements")
+  associations         Association[]
 }
 
 model Competency {
-    id        String   @default(cuid()) @id
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    type EntityType
-    name String
-    description String?
-    defaultCredits String?
-    defaultPoints String?
-    sourcedId String?
-    associations Association[]
-    alternativeLabel String?
-    additionalProperties String?
-    humanCodingScheme String?
-    CFDocumentURI String?
-    bloomCategory BloomLevel?
-    resources Resource[]
-    tags Tag[]
-    issuer Issuer @relation(name: "CompetencyIssuer")
-    endorsements Issuer[] @relation(name: "CompetencyEndorsements")
+  id                   String        @default(cuid()) @id
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  type                 EntityType
+  name                 String
+  description          String?
+  defaultCredits       String?
+  defaultPoints        String?
+  sourcedId            String?
+  courses              Course[]
+  alternativeLabel     String?
+  additionalProperties String?
+  humanCodingScheme    String?
+  CFDocumentURI        String?
+  bloomCategory        BloomLevel?
+  resources            Resource[]
+  tags                 Tag[]
+  issuer               Issuer        @relation(name: "CompetencyIssuer")
+  endorsements         Issuer[]      @relation(name: "CompetencyEndorsements")
+  associations         Association[]
 }
 
 model Course {
-  id        String   @default(cuid()) @id
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  type EntityType @default(Course)
-    name String
-    description String
-    defaultCredits String
-    defaultPoints String?
-    sourcedId String?
-    associations Association[]
-    alternativeLabel String?
-    additionalProperties String?
-    courseCode String
-    startDate DateTime?
-    endDate DateTime?
-    issuer Issuer @relation(name: "CourseIssuer")
-    endorsements Issuer[] @relation(name: "CourseEndorsements")
+  id                   String        @default(cuid()) @id
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  type                 EntityType    @default(Course)
+  name                 String
+  description          String
+  defaultCredits       String
+  defaultPoints        String?
+  sourcedId            String?
+  associations         Association[]
+  alternativeLabel     String?
+  additionalProperties String?
+  courseCode           String
+  startDate            DateTime?
+  endDate              DateTime?
+  issuer               Issuer        @relation(name: "CourseIssuer")
+  endorsements         Issuer[]      @relation(name: "CourseEndorsements")
 }
 
 model Issuer {
-  id        String   @default(cuid()) @id
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-    type String @default(value: "Issuer") 
-    name String
-    url String @unique
-    address String?
-    phone String?
-    logo String?
-    issuingPersonFullName String
-    issuingPersonTitle String
-    additionalProperties String?
+  id                    String   @default(cuid()) @id
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  type                  String   @default(value: "Issuer")
+  name                  String
+  url                   String   @unique
+  address               String?
+  phone                 String?
+  logo                  String?
+  issuingPersonFullName String
+  issuingPersonTitle    String
+  additionalProperties  String?
 }
 
 model Resource {
-  id        String   @default(cuid()) @id
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  description String
-  url String
-  tags Tag[]
-  issuer Issuer @relation(name: "ResourceIssuer")
+  id           String   @default(cuid()) @id
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  description  String
+  url          String
+  tags         Tag[]
+  issuer       Issuer   @relation(name: "ResourceIssuer")
   endorsements Issuer[] @relation(name: "ResourceEndorsements")
 }
 
 model Tag {
-  id        String   @default(cuid()) @id
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  issuer Issuer
-  name String
-  conceptualCategory ConceptualCategory
+  id                  String             @default(cuid()) @id
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+  issuer              Issuer
+  name                String
+  conceptualCategory  ConceptualCategory
   orderWithinCategory Int
 }
 
 model ConceptualCategory {
-  id        String   @default(cuid()) @id
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  issuer Issuer
-  name String
+  id          String   @default(cuid()) @id
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  issuer      Issuer
+  name        String
   description String
 }
-
-
-
-
-
-

@@ -8,7 +8,7 @@ type Association {
   createdAt: DateTime!
   entityId: String!
   entityType: EntityType!
-  id: ID!
+  id: String!
   type: String!
   updatedAt: DateTime!
 }
@@ -43,21 +43,21 @@ enum BloomLevel {
 type Competency {
   additionalProperties: String
   alternativeLabel: String
-  associations(after: ID, before: ID, first: Int, last: Int, skip: Int): [Association!]!
+  associations(after: String, before: String, first: Int, last: Int, skip: Int): [Association!]!
   bloomCategory: BloomLevel
   CFDocumentURI: String
   createdAt: DateTime!
   defaultCredits: String
   defaultPoints: String
   description: String
-  endorsements(after: ID, before: ID, first: Int, last: Int, skip: Int): [Issuer!]!
+  endorsements(after: String, before: String, first: Int, last: Int, skip: Int): [Issuer!]!
   humanCodingScheme: String
-  id: ID!
+  id: String!
   issuer: Issuer!
   name: String!
-  resources(after: ID, before: ID, first: Int, last: Int, skip: Int): [Resource!]!
+  resources(after: String, before: String, first: Int, last: Int, skip: Int): [Resource!]!
   sourcedId: String
-  tags(after: ID, before: ID, first: Int, last: Int, skip: Int): [Tag!]!
+  tags(after: String, before: String, first: Int, last: Int, skip: Int): [Tag!]!
   type: EntityType!
   updatedAt: DateTime!
 }
@@ -65,7 +65,7 @@ type Competency {
 type ConceptualCategory {
   createdAt: DateTime!
   description: String!
-  id: ID!
+  id: String!
   issuer: Issuer!
   name: String!
   updatedAt: DateTime!
@@ -74,15 +74,15 @@ type ConceptualCategory {
 type Course {
   additionalProperties: String
   alternativeLabel: String
-  associations(after: ID, before: ID, first: Int, last: Int, skip: Int): [Association!]!
+  associations(after: String, before: String, first: Int, last: Int, skip: Int): [Association!]!
   courseCode: String!
   createdAt: DateTime!
   defaultCredits: String!
   defaultPoints: String
   description: String!
   endDate: DateTime
-  endorsements(after: ID, before: ID, first: Int, last: Int, skip: Int): [Issuer!]!
-  id: ID!
+  endorsements(after: String, before: String, first: Int, last: Int, skip: Int): [Issuer!]!
+  id: String!
   issuer: Issuer!
   name: String!
   sourcedId: String
@@ -108,7 +108,7 @@ type Issuer {
   additionalProperties: String
   address: String
   createdAt: DateTime!
-  id: ID!
+  id: String!
   issuingPersonFullName: String!
   issuingPersonTitle: String!
   logo: String
@@ -131,10 +131,10 @@ type Query {
 type Resource {
   createdAt: DateTime!
   description: String!
-  endorsements(after: ID, before: ID, first: Int, last: Int, skip: Int): [Issuer!]!
-  id: ID!
+  endorsements(after: String, before: String, first: Int, last: Int, skip: Int): [Issuer!]!
+  id: String!
   issuer: Issuer!
-  tags(after: ID, before: ID, first: Int, last: Int, skip: Int): [Tag!]!
+  tags(after: String, before: String, first: Int, last: Int, skip: Int): [Tag!]!
   updatedAt: DateTime!
   url: String!
 }
@@ -142,7 +142,7 @@ type Resource {
 type Tag {
   conceptualCategory: ConceptualCategory!
   createdAt: DateTime!
-  id: ID!
+  id: String!
   issuer: Issuer!
   name: String!
   orderWithinCategory: Int!

@@ -4,7 +4,7 @@ datasource postgres {
 }
 
 generator photon {
-  provider = "photonjs"
+  provider = "prisma-client-js"
 }
 
 enum AssociationType {

@@ -1,9 +1,9 @@
-import { Photon, CourseClient } from '@prisma/photon'
+import { PrismaClient } from '@prisma/client'
 import fs from 'fs'
 
 const uvu_courses = fs.readFileSync('prisma/example_files/uvu_courses.json')
 
-const photon = new Photon()
+const prismaClient = new PrismaClient()
 
 const issuers = [
   {
@@ -85,7 +85,7 @@ async function createIssuers() {
     }
   })
   for (let mpdIssuer of mappedIssuers) {
-  await photon.issuers
+  await prismaClient.issuer
     .create(mpdIssuer)
     .catch(err =>
       console.log(
@@ -139,7 +139,7 @@ async function main() {
   await createIssuers()
   const allCourses = loadUVUCourses()
   for (let crs of allCourses) {
-    await photon.courses
+    await prismaClient.course
       .create(crs)
       .catch(err => console.log(`Error trying to create UVU courses: ${err}`))
   }
@@ -148,5 +148,5 @@ async function main() {
 main()
   .catch(e => console.error(e))
   .finally(async () => {
-    await photon.disconnect()
+    await prismaClient.disconnect()
   })

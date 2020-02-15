@@ -1,11 +1,11 @@
-import { Photon } from '@prisma/photon'
+import { PrismaClient } from '@prisma/client'
 import fs from 'fs'
 
 const bundle = JSON.parse(
   fs.readFileSync('prisma/example_files/challenge-bundle.json'),
 )
 
-const photon = new Photon()
+const prismaClient = new PrismaClient()
 
 const selectBlocks = [
   bundle['responsive-web-design'],
@@ -34,19 +34,19 @@ async function loadAllChallenges() {
   let categoryId = ''
   const challengeArray = []
   for (let superBlock of selectBlocks) {
-  for (let [key, value] of Object.entries(superBlock.blocks)) {
-    //order of the block of challenges' container within the whole FCC curriculum (e.g. 1 equals the first certification "Responsive Web Design Certification")
-    console.log(key)
-    const superOrder = value.meta.superOrder
-    //order of the block within a particular certification (e.g. 0 equals "Basic HTML and HTML5 within Responsive Web Design Certification")
-    const order = value.meta.order
-    const category = value.meta.superBlock
-    //let hyphenName = value.meta.name.replace(/\s/g, '-').toLowerCase()
-    let spacedCategory = category.replace(/-/g, ' ').toLowerCase()
-    let categoryCapitalized = capitalizeEveryWord(spacedCategory)
-    const resourceURL = `https://learn.freecodecamp.org/${category}/${value.meta.dashedName}/`
+    for (let [key, value] of Object.entries(superBlock.blocks)) {
+      //order of the block of challenges' container within the whole FCC curriculum (e.g. 1 equals the first certification "Responsive Web Design Certification")
+      console.log(key)
+      const superOrder = value.meta.superOrder
+      //order of the block within a particular certification (e.g. 0 equals "Basic HTML and HTML5 within Responsive Web Design Certification")
+      const order = value.meta.order
+      const category = value.meta.superBlock
+      //let hyphenName = value.meta.name.replace(/\s/g, '-').toLowerCase()
+      let spacedCategory = category.replace(/-/g, ' ').toLowerCase()
+      let categoryCapitalized = capitalizeEveryWord(spacedCategory)
+      const resourceURL = `https://learn.freecodecamp.org/${category}/${value.meta.dashedName}/`
 
-    let compMap = value.challenges.map(challenge => {
+      let compMap = value.challenges.map(challenge => {
         return {
           data: {
             type: 'Competency',
@@ -76,11 +76,11 @@ async function loadAllChallenges() {
             }),
           },
         }
-    })
+      })
 
-    challengeArray.push(...compMap)
+      challengeArray.push(...compMap)
 
-    /* let videoUrl = challenge.videoUrl
+      /* let videoUrl = challenge.videoUrl
     const tagName = value.meta.name
     console.log(
       `${superOrder}    ${category}    ${hyphenName}    ${spacedCategory}    ${tagName}   ${order}`,
@@ -90,10 +90,9 @@ async function loadAllChallenges() {
     let certFound = certArray.includes(certName)
     let categoryFound = categoryArray.includes(spacedCategory)
     let tagFound = tagArray.includes(tagName) */
-
     }
 
-   /*  if (!categoryFound) {
+    /*  if (!categoryFound) {
       let catVars = {
         name: categoryCapitalized,
         description: `This tag "${tagName}" is identified by the issuer as part of the "${categoryCapitalized}" category.`,
@@ -113,7 +112,7 @@ async function loadAllChallenges() {
         .catch(err => console.log(`${err}`))
     } */
 
-/*     if (!tagFound) {
+    /*     if (!tagFound) {
       let tagVars = {
         name: tagName,
         issuer: {
@@ -167,7 +166,7 @@ async function loadAllChallenges() {
         .catch(err => console.log(`${err}`))
     } */
 
-   /*  for (let challenge of block.challenges) {
+    /*  for (let challenge of block.challenges) {
       let fullURL =
         resourceURL + challenge.title.replace(/\s/g, '-').toLowerCase()
       let competencyVars = {
@@ -226,21 +225,19 @@ async function loadAllChallenges() {
 }
 
 async function main() {
-                        const allChallenges = await loadAllChallenges()
-                        //console.log(allChallenges)
-                        for (let crs of allChallenges) {
-                          await photon.competencies
-                            .create(crs)
-                            .catch(err =>
-                              console.log(
-                                `Error trying to create FCC challenges: ${err}`,
-                              ),
-                            )
-                        }
-                      }
+  const allChallenges = await loadAllChallenges()
+  //console.log(allChallenges)
+  for (let crs of allChallenges) {
+    await prismaClient.competency
+      .create(crs)
+      .catch(err =>
+        console.log(`Error trying to create FCC challenges: ${err}`),
+      )
+  }
+}
 
 main()
   .catch(e => console.error(e))
   .finally(async () => {
-    await photon.disconnect()
+    await prismaClient.disconnect()
   })

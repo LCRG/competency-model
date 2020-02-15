@@ -1,11 +1,8 @@
 import { ApolloServer } from 'apollo-server'
 import { schema } from './schema'
-import { Photon } from '@prisma/photon'
+import { createContext } from './context'
 
-
-const photon = new Photon()
-
-new ApolloServer({ schema, context: { photon } }).listen(
+new ApolloServer({ schema, context: createContext }).listen(
   { port: 4000 },
   () =>
     console.log(

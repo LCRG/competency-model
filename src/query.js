@@ -7,7 +7,7 @@ export const Query = queryType({
       nullable: true,
       args: { id: idArg() },
       resolve: (parent, { id }, ctx) => {
-        return ctx.photon.course.findOne({
+        return ctx.prisma.course.findOne({
           where: {
             id,
           },
@@ -18,7 +18,7 @@ export const Query = queryType({
     t.list.field('Courses', {
       type: 'Course',
       resolve: (parent, args, ctx) => {
-        return ctx.photon.course.findMany()
+        return ctx.prisma.course.findMany()
       },
     })
 
@@ -28,7 +28,7 @@ export const Query = queryType({
         searchString: stringArg({ nullable: true }),
       },
       resolve: (_, { searchString }, ctx) => {
-        return ctx.photon.course.findMany({
+        return ctx.prisma.course.findMany({
           where: {
             OR: [
               { name: { contains: searchString } },
@@ -44,7 +44,7 @@ export const Query = queryType({
       nullable: true,
       args: { id: idArg() },
       resolve: (parent, { id }, ctx) => {
-        return ctx.photon.competency.findOne({
+        return ctx.prisma.competency.findOne({
           where: {
             id,
           },
@@ -55,7 +55,7 @@ export const Query = queryType({
     t.list.field('Competencies', {
       type: 'Competency',
       resolve: (parent, args, ctx) => {
-        return ctx.photon.competency.findMany()
+        return ctx.prisma.competency.findMany()
       },
     })
 
@@ -65,7 +65,7 @@ export const Query = queryType({
         searchString: stringArg({ nullable: true }),
       },
       resolve: (_, { searchString }, ctx) => {
-        return ctx.photon.competency.findMany({
+        return ctx.prisma.competency.findMany({
           where: {
             OR: [
               { name: { contains: searchString } },

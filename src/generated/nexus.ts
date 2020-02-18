@@ -19,12 +19,289 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  AssociationFilter: { // input type
+    every?: NexusGenInputs['AssociationWhereInput'] | null; // AssociationWhereInput
+    none?: NexusGenInputs['AssociationWhereInput'] | null; // AssociationWhereInput
+    some?: NexusGenInputs['AssociationWhereInput'] | null; // AssociationWhereInput
+  }
+  AssociationWhereInput: { // input type
+    additionalProperties?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    AND?: NexusGenInputs['AssociationWhereInput'][] | null; // [AssociationWhereInput!]
+    associationType?: NexusGenEnums['AssociationType'] | null; // AssociationType
+    certificate?: NexusGenInputs['CertificateWhereInput'] | null; // CertificateWhereInput
+    competency?: NexusGenInputs['CompetencyWhereInput'] | null; // CompetencyWhereInput
+    course?: NexusGenInputs['CourseWhereInput'] | null; // CourseWhereInput
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    entityId?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    entityType?: NexusGenEnums['EntityType'] | null; // EntityType
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['AssociationWhereInput'][] | null; // [AssociationWhereInput!]
+    OR?: NexusGenInputs['AssociationWhereInput'][] | null; // [AssociationWhereInput!]
+    type?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+  }
+  CertificateFilter: { // input type
+    every?: NexusGenInputs['CertificateWhereInput'] | null; // CertificateWhereInput
+    none?: NexusGenInputs['CertificateWhereInput'] | null; // CertificateWhereInput
+    some?: NexusGenInputs['CertificateWhereInput'] | null; // CertificateWhereInput
+  }
+  CertificateWhereInput: { // input type
+    additionalProperties?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    alternativeLabel?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    AND?: NexusGenInputs['CertificateWhereInput'][] | null; // [CertificateWhereInput!]
+    areaOfStudy?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    associations?: NexusGenInputs['AssociationFilter'] | null; // AssociationFilter
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    defaultCredits?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    defaultPoints?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    description?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    endorsements?: NexusGenInputs['IssuerFilter'] | null; // IssuerFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    issuer?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
+    level?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['CertificateWhereInput'][] | null; // [CertificateWhereInput!]
+    OR?: NexusGenInputs['CertificateWhereInput'][] | null; // [CertificateWhereInput!]
+    sourcedId?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    type?: NexusGenEnums['EntityType'] | null; // EntityType
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+  }
+  CompetencyFilter: { // input type
+    every?: NexusGenInputs['CompetencyWhereInput'] | null; // CompetencyWhereInput
+    none?: NexusGenInputs['CompetencyWhereInput'] | null; // CompetencyWhereInput
+    some?: NexusGenInputs['CompetencyWhereInput'] | null; // CompetencyWhereInput
+  }
+  CompetencyWhereInput: { // input type
+    additionalProperties?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    alternativeLabel?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    AND?: NexusGenInputs['CompetencyWhereInput'][] | null; // [CompetencyWhereInput!]
+    associations?: NexusGenInputs['AssociationFilter'] | null; // AssociationFilter
+    bloomCategory?: NexusGenEnums['BloomLevel'] | null; // BloomLevel
+    CFDocumentURI?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    courses?: NexusGenInputs['CourseFilter'] | null; // CourseFilter
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    defaultCredits?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    defaultPoints?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    description?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    endorsements?: NexusGenInputs['IssuerFilter'] | null; // IssuerFilter
+    humanCodingScheme?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    issuer?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['CompetencyWhereInput'][] | null; // [CompetencyWhereInput!]
+    OR?: NexusGenInputs['CompetencyWhereInput'][] | null; // [CompetencyWhereInput!]
+    resources?: NexusGenInputs['ResourceFilter'] | null; // ResourceFilter
+    sourcedId?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    tags?: NexusGenInputs['TagFilter'] | null; // TagFilter
+    type?: NexusGenEnums['EntityType'] | null; // EntityType
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+  }
+  ConceptualCategoryFilter: { // input type
+    every?: NexusGenInputs['ConceptualCategoryWhereInput'] | null; // ConceptualCategoryWhereInput
+    none?: NexusGenInputs['ConceptualCategoryWhereInput'] | null; // ConceptualCategoryWhereInput
+    some?: NexusGenInputs['ConceptualCategoryWhereInput'] | null; // ConceptualCategoryWhereInput
+  }
+  ConceptualCategoryWhereInput: { // input type
+    AND?: NexusGenInputs['ConceptualCategoryWhereInput'][] | null; // [ConceptualCategoryWhereInput!]
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    description?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    issuer?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['ConceptualCategoryWhereInput'][] | null; // [ConceptualCategoryWhereInput!]
+    OR?: NexusGenInputs['ConceptualCategoryWhereInput'][] | null; // [ConceptualCategoryWhereInput!]
+    tags?: NexusGenInputs['TagFilter'] | null; // TagFilter
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+  }
+  CourseFilter: { // input type
+    every?: NexusGenInputs['CourseWhereInput'] | null; // CourseWhereInput
+    none?: NexusGenInputs['CourseWhereInput'] | null; // CourseWhereInput
+    some?: NexusGenInputs['CourseWhereInput'] | null; // CourseWhereInput
+  }
+  CourseWhereInput: { // input type
+    additionalProperties?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    alternativeLabel?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    AND?: NexusGenInputs['CourseWhereInput'][] | null; // [CourseWhereInput!]
+    associations?: NexusGenInputs['AssociationFilter'] | null; // AssociationFilter
+    competency?: NexusGenInputs['CompetencyWhereInput'] | null; // CompetencyWhereInput
+    courseCode?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    defaultCredits?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    defaultPoints?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    description?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    endDate?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
+    endorsements?: NexusGenInputs['IssuerFilter'] | null; // IssuerFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    issuer?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['CourseWhereInput'][] | null; // [CourseWhereInput!]
+    OR?: NexusGenInputs['CourseWhereInput'][] | null; // [CourseWhereInput!]
+    sourcedId?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    startDate?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
+    type?: NexusGenEnums['EntityType'] | null; // EntityType
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+  }
+  DateTimeFilter: { // input type
+    equals?: any | null; // DateTime
+    gt?: any | null; // DateTime
+    gte?: any | null; // DateTime
+    in?: any[] | null; // [DateTime!]
+    lt?: any | null; // DateTime
+    lte?: any | null; // DateTime
+    not?: any | null; // DateTime
+    notIn?: any[] | null; // [DateTime!]
+  }
+  IntFilter: { // input type
+    equals?: number | null; // Int
+    gt?: number | null; // Int
+    gte?: number | null; // Int
+    in?: number[] | null; // [Int!]
+    lt?: number | null; // Int
+    lte?: number | null; // Int
+    not?: number | null; // Int
+    notIn?: number[] | null; // [Int!]
+  }
+  IssuerFilter: { // input type
+    every?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
+    none?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
+    some?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
+  }
+  IssuerOrderByInput: { // input type
+    additionalProperties?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    address?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    createdAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    issuingPersonFullName?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    issuingPersonTitle?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    logo?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    phone?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    type?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    updatedAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    url?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+  }
+  IssuerWhereInput: { // input type
+    additionalProperties?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    address?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    AND?: NexusGenInputs['IssuerWhereInput'][] | null; // [IssuerWhereInput!]
+    certificate?: NexusGenInputs['CertificateWhereInput'] | null; // CertificateWhereInput
+    certificates?: NexusGenInputs['CertificateFilter'] | null; // CertificateFilter
+    competencies?: NexusGenInputs['CompetencyFilter'] | null; // CompetencyFilter
+    competency?: NexusGenInputs['CompetencyWhereInput'] | null; // CompetencyWhereInput
+    conceptualCategories?: NexusGenInputs['ConceptualCategoryFilter'] | null; // ConceptualCategoryFilter
+    course?: NexusGenInputs['CourseWhereInput'] | null; // CourseWhereInput
+    courses?: NexusGenInputs['CourseFilter'] | null; // CourseFilter
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    issuingPersonFullName?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    issuingPersonTitle?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    logo?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['IssuerWhereInput'][] | null; // [IssuerWhereInput!]
+    OR?: NexusGenInputs['IssuerWhereInput'][] | null; // [IssuerWhereInput!]
+    phone?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    resource?: NexusGenInputs['ResourceWhereInput'] | null; // ResourceWhereInput
+    resources?: NexusGenInputs['ResourceFilter'] | null; // ResourceFilter
+    tags?: NexusGenInputs['TagFilter'] | null; // TagFilter
+    type?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    url?: NexusGenInputs['StringFilter'] | null; // StringFilter
+  }
+  NullableDateTimeFilter: { // input type
+    equals?: any | null; // DateTime
+    gt?: any | null; // DateTime
+    gte?: any | null; // DateTime
+    in?: any[] | null; // [DateTime!]
+    lt?: any | null; // DateTime
+    lte?: any | null; // DateTime
+    not?: any | null; // DateTime
+    notIn?: any[] | null; // [DateTime!]
+  }
+  NullableStringFilter: { // input type
+    contains?: string | null; // String
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: string[] | null; // [String!]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    not?: string | null; // String
+    notIn?: string[] | null; // [String!]
+    startsWith?: string | null; // String
+  }
+  ResourceFilter: { // input type
+    every?: NexusGenInputs['ResourceWhereInput'] | null; // ResourceWhereInput
+    none?: NexusGenInputs['ResourceWhereInput'] | null; // ResourceWhereInput
+    some?: NexusGenInputs['ResourceWhereInput'] | null; // ResourceWhereInput
+  }
+  ResourceOrderByInput: { // input type
+    createdAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    description?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    updatedAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    url?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+  }
+  ResourceWhereInput: { // input type
+    AND?: NexusGenInputs['ResourceWhereInput'][] | null; // [ResourceWhereInput!]
+    competency?: NexusGenInputs['CompetencyWhereInput'] | null; // CompetencyWhereInput
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    description?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    endorsements?: NexusGenInputs['IssuerFilter'] | null; // IssuerFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    issuer?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
+    NOT?: NexusGenInputs['ResourceWhereInput'][] | null; // [ResourceWhereInput!]
+    OR?: NexusGenInputs['ResourceWhereInput'][] | null; // [ResourceWhereInput!]
+    tags?: NexusGenInputs['TagFilter'] | null; // TagFilter
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    url?: NexusGenInputs['StringFilter'] | null; // StringFilter
+  }
+  StringFilter: { // input type
+    contains?: string | null; // String
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: string[] | null; // [String!]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    not?: string | null; // String
+    notIn?: string[] | null; // [String!]
+    startsWith?: string | null; // String
+  }
+  TagFilter: { // input type
+    every?: NexusGenInputs['TagWhereInput'] | null; // TagWhereInput
+    none?: NexusGenInputs['TagWhereInput'] | null; // TagWhereInput
+    some?: NexusGenInputs['TagWhereInput'] | null; // TagWhereInput
+  }
+  TagOrderByInput: { // input type
+    createdAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    orderWithinCategory?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    updatedAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+  }
+  TagWhereInput: { // input type
+    AND?: NexusGenInputs['TagWhereInput'][] | null; // [TagWhereInput!]
+    competency?: NexusGenInputs['CompetencyWhereInput'] | null; // CompetencyWhereInput
+    conceptualCategory?: NexusGenInputs['ConceptualCategoryWhereInput'] | null; // ConceptualCategoryWhereInput
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    issuer?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['TagWhereInput'][] | null; // [TagWhereInput!]
+    OR?: NexusGenInputs['TagWhereInput'][] | null; // [TagWhereInput!]
+    orderWithinCategory?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    resource?: NexusGenInputs['ResourceWhereInput'] | null; // ResourceWhereInput
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+  }
 }
 
 export interface NexusGenEnums {
   AssociationType: prisma.AssociationType
   BloomLevel: prisma.BloomLevel
   EntityType: prisma.EntityType
+  OrderByArg: prisma.OrderByArg
 }
 
 export interface NexusGenRootTypes {
@@ -45,9 +322,34 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  AssociationFilter: NexusGenInputs['AssociationFilter'];
+  AssociationWhereInput: NexusGenInputs['AssociationWhereInput'];
+  CertificateFilter: NexusGenInputs['CertificateFilter'];
+  CertificateWhereInput: NexusGenInputs['CertificateWhereInput'];
+  CompetencyFilter: NexusGenInputs['CompetencyFilter'];
+  CompetencyWhereInput: NexusGenInputs['CompetencyWhereInput'];
+  ConceptualCategoryFilter: NexusGenInputs['ConceptualCategoryFilter'];
+  ConceptualCategoryWhereInput: NexusGenInputs['ConceptualCategoryWhereInput'];
+  CourseFilter: NexusGenInputs['CourseFilter'];
+  CourseWhereInput: NexusGenInputs['CourseWhereInput'];
+  DateTimeFilter: NexusGenInputs['DateTimeFilter'];
+  IntFilter: NexusGenInputs['IntFilter'];
+  IssuerFilter: NexusGenInputs['IssuerFilter'];
+  IssuerOrderByInput: NexusGenInputs['IssuerOrderByInput'];
+  IssuerWhereInput: NexusGenInputs['IssuerWhereInput'];
+  NullableDateTimeFilter: NexusGenInputs['NullableDateTimeFilter'];
+  NullableStringFilter: NexusGenInputs['NullableStringFilter'];
+  ResourceFilter: NexusGenInputs['ResourceFilter'];
+  ResourceOrderByInput: NexusGenInputs['ResourceOrderByInput'];
+  ResourceWhereInput: NexusGenInputs['ResourceWhereInput'];
+  StringFilter: NexusGenInputs['StringFilter'];
+  TagFilter: NexusGenInputs['TagFilter'];
+  TagOrderByInput: NexusGenInputs['TagOrderByInput'];
+  TagWhereInput: NexusGenInputs['TagWhereInput'];
   AssociationType: NexusGenEnums['AssociationType'];
   BloomLevel: NexusGenEnums['BloomLevel'];
   EntityType: NexusGenEnums['EntityType'];
+  OrderByArg: NexusGenEnums['OrderByArg'];
 }
 
 export interface NexusGenFieldTypes {
@@ -127,6 +429,7 @@ export interface NexusGenFieldTypes {
     Competencies: NexusGenRootTypes['Competency'][]; // [Competency!]!
     Competency: NexusGenRootTypes['Competency'] | null; // Competency
     Course: NexusGenRootTypes['Course'] | null; // Course
+    courseByCourseCode: NexusGenRootTypes['Course'] | null; // Course
     Courses: NexusGenRootTypes['Course'][]; // [Course!]!
     filterCompetencies: NexusGenRootTypes['Competency'][]; // [Competency!]!
     filterCourses: NexusGenRootTypes['Course'][]; // [Course!]!
@@ -166,21 +469,27 @@ export interface NexusGenArgTypes {
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
+      orderBy?: NexusGenInputs['IssuerOrderByInput'] | null; // IssuerOrderByInput
       skip?: number | null; // Int
+      where?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
     }
     resources: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
+      orderBy?: NexusGenInputs['ResourceOrderByInput'] | null; // ResourceOrderByInput
       skip?: number | null; // Int
+      where?: NexusGenInputs['ResourceWhereInput'] | null; // ResourceWhereInput
     }
     tags: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
+      orderBy?: NexusGenInputs['TagOrderByInput'] | null; // TagOrderByInput
       skip?: number | null; // Int
+      where?: NexusGenInputs['TagWhereInput'] | null; // TagWhereInput
     }
   }
   Course: {
@@ -196,7 +505,9 @@ export interface NexusGenArgTypes {
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
+      orderBy?: NexusGenInputs['IssuerOrderByInput'] | null; // IssuerOrderByInput
       skip?: number | null; // Int
+      where?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
     }
   }
   Query: {
@@ -205,6 +516,9 @@ export interface NexusGenArgTypes {
     }
     Course: { // args
       id?: string | null; // ID
+    }
+    courseByCourseCode: { // args
+      courseCode?: string | null; // String
     }
     filterCompetencies: { // args
       searchString?: string | null; // String
@@ -238,9 +552,9 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "Association" | "Competency" | "ConceptualCategory" | "Course" | "Issuer" | "Query" | "Resource" | "Tag";
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = "AssociationFilter" | "AssociationWhereInput" | "CertificateFilter" | "CertificateWhereInput" | "CompetencyFilter" | "CompetencyWhereInput" | "ConceptualCategoryFilter" | "ConceptualCategoryWhereInput" | "CourseFilter" | "CourseWhereInput" | "DateTimeFilter" | "IntFilter" | "IssuerFilter" | "IssuerOrderByInput" | "IssuerWhereInput" | "NullableDateTimeFilter" | "NullableStringFilter" | "ResourceFilter" | "ResourceOrderByInput" | "ResourceWhereInput" | "StringFilter" | "TagFilter" | "TagOrderByInput" | "TagWhereInput";
 
-export type NexusGenEnumNames = "AssociationType" | "BloomLevel" | "EntityType";
+export type NexusGenEnumNames = "AssociationType" | "BloomLevel" | "EntityType" | "OrderByArg";
 
 export type NexusGenInterfaceNames = never;
 

@@ -106,7 +106,7 @@ model Course {
   associations         Association[]
   alternativeLabel     String?
   additionalProperties String?
-  courseCode           String
+  courseCode           String        @unique
   startDate            DateTime?
   endDate              DateTime?
   issuer               Issuer        @relation(name: "CourseIssuer")

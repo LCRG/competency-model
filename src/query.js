@@ -15,6 +15,19 @@ export const Query = queryType({
       },
     })
 
+    t.field('courseByCourseCode', {
+      type: 'Course',
+      nullable: true,
+      args: { courseCode: stringArg() },
+      resolve: (parent, { courseCode }, ctx) => {
+        return ctx.prisma.course.findOne({
+          where: {
+            courseCode,
+          }
+        })
+      }
+    })
+
     t.list.field('Courses', {
       type: 'Course',
       resolve: (parent, args, ctx) => {

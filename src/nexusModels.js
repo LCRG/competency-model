@@ -32,10 +32,10 @@ const Competency = objectType({
         t.model.humanCodingScheme()
         t.model.CFDocumentURI()
         t.model.bloomCategory()
-        t.model.resources()
-        t.model.tags()
+        t.model.resources({ ordering: true, filtering: true})
+        t.model.tags({ ordering: true, filtering: true})
         t.model.issuer()
-        t.model.endorsements()
+        t.model.endorsements({ ordering: true, filtering: true})
     }
 })
 
@@ -58,7 +58,7 @@ const Course = objectType({
         t.model.startDate()
         t.model.endDate()
         t.model.issuer()
-        t.model.endorsements()
+        t.model.endorsements({ ordering: true, filtering: true})
     }
 })
 

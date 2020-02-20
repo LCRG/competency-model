@@ -138,6 +138,7 @@ export interface NexusGenInputs {
     OR?: NexusGenInputs['CourseWhereInput'][] | null; // [CourseWhereInput!]
     sourcedId?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
     startDate?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
+    termsOffered?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
     type?: NexusGenEnums['EntityType'] | null; // EntityType
     updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
   }
@@ -408,6 +409,7 @@ export interface NexusGenFieldTypes {
     name: string; // String!
     sourcedId: string | null; // String
     startDate: any | null; // DateTime
+    termsOffered: string | null; // String
     type: NexusGenEnums['EntityType']; // EntityType!
     updatedAt: any; // DateTime!
   }

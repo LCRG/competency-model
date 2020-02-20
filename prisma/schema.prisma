@@ -111,6 +111,7 @@ model Course {
   endDate              DateTime?
   issuer               Issuer        @relation(name: "CourseIssuer")
   endorsements         Issuer[]      @relation(name: "CourseEndorsements")
+  termsOffered         String?
 }
 
 model Issuer {
@@ -137,6 +138,17 @@ model Resource {
   tags         Tag[]
   issuer       Issuer   @relation(name: "ResourceIssuer")
   endorsements Issuer[] @relation(name: "ResourceEndorsements")
+  videoURL String?
+  tests UnitTest[]
+}
+
+model UnitTest {
+  id           String   @default(cuid()) @id
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  title String?
+  text String?
+  testString String?
 }
 
 model Tag {

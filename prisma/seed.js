@@ -123,6 +123,7 @@ function loadUVUCourses() {
             url: 'https://www.uvu.edu/',
           },
         },
+        termsOffered: crs.termsOffered._text,
         additionalProperties: JSON.stringify({
           prefix: crs.prefix._text,
           subject: crs.subject._text,

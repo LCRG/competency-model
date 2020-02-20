@@ -189,6 +189,7 @@ type Course {
   name: String!
   sourcedId: String
   startDate: DateTime
+  termsOffered: String
   type: EntityType!
   updatedAt: DateTime!
 }
@@ -219,6 +220,7 @@ input CourseWhereInput {
   OR: [CourseWhereInput!]
   sourcedId: NullableStringFilter
   startDate: NullableDateTimeFilter
+  termsOffered: NullableStringFilter
   type: EntityType
   updatedAt: DateTimeFilter
 }

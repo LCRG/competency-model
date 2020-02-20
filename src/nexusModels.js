@@ -59,6 +59,7 @@ const Course = objectType({
         t.model.endDate()
         t.model.issuer()
         t.model.endorsements({ ordering: true, filtering: true})
+        t.model.termsOffered()
     }
 })
 

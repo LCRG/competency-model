@@ -1,11 +1,11 @@
-import { PrismaClient } from '@prisma/client'
+//import { PrismaClient } from '@prisma/client'
 import fs from 'fs'
 
 const bundle = JSON.parse(
   fs.readFileSync('prisma/example_files/challenge-bundle.json'),
 )
 
-const prismaClient = new PrismaClient()
+//const prismaClient = new PrismaClient()
 
 const selectBlocks = [
   bundle['responsive-web-design'],
@@ -224,22 +224,21 @@ async function loadAllChallenges() {
   return challengeArray
 }
 
-
-
 async function main() {
   const allChallenges = await loadAllChallenges()
   //console.log(allChallenges)
   for (let crs of allChallenges) {
-    await prismaClient.competency
+    //console.log(crs.data.name)
+    /* await prismaClient.competency
       .create(crs)
       .catch(err =>
         console.log(`Error trying to create FCC challenges: ${err}`),
-      )
+      ) */
   }
 }
 
 main()
   .catch(e => console.error(e))
   .finally(async () => {
-    await prismaClient.disconnect()
+   // await prismaClient.disconnect()
   })

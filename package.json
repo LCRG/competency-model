@@ -8,6 +8,7 @@
     "postinstall": "npm -s run generate",
     "dev": "npx prisma2 studio --experimental",
     "start": "node -r esm src",
+    "test": "node -r esm prisma/testLoadFCC",
     "seed": "node -r esm prisma/seed && node -r esm prisma/loadFCC"
   },
   "dependencies": {

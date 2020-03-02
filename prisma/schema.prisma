@@ -40,6 +40,22 @@ enum BloomLevel {
   INFO
 }
 
+enum PersonType {
+  Faculty
+  Instructor
+  TeachingAssistant
+  AdjunctFaculty
+  CourseMentor
+  Teacher
+  Evaluator
+  Issuer
+  Owner
+  Representative
+  Provider
+  Employer
+  Endorser
+}
+
 model Association {
   id                   String          @default(cuid()) @id
   createdAt            DateTime        @default(now())
@@ -65,8 +81,7 @@ model Certificate {
   additionalProperties String?
   level                String?
   areaOfStudy          String?
-  issuer               Issuer        @relation(name: "CertificateIssuer")
-  endorsements         Issuer[]      @relation(name: "CertificateEndorsements")
+  associatedPersonnel  Person[]
   associations         Association[]
 }
 
@@ -88,8 +103,7 @@ model Competency {
   bloomCategory        BloomLevel?
   resources            Resource[]
   tags                 Tag[]
-  issuer               Issuer        @relation(name: "CompetencyIssuer")
-  endorsements         Issuer[]      @relation(name: "CompetencyEndorsements")
+  associatedPersonnel  Person[]
   associations         Association[]
 }
 
@@ -109,63 +123,54 @@ model Course {
   courseCode           String        @unique
   startDate            DateTime?
   endDate              DateTime?
-  issuer               Issuer        @relation(name: "CourseIssuer")
-  endorsements         Issuer[]      @relation(name: "CourseEndorsements")
   termsOffered         String?
+  associatedPersonnel  Person[]
 }
 
-model Issuer {
-  id                    String   @default(cuid()) @id
-  createdAt             DateTime @default(now())
-  updatedAt             DateTime @updatedAt
-  type                  String   @default(value: "Issuer")
-  name                  String
-  url                   String   @unique
-  address               String?
-  phone                 String?
-  logo                  String?
-  issuingPersonFullName String
-  issuingPersonTitle    String
-  additionalProperties  String?
+model Person {
+  id                   String       @default(cuid()) @id
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+  name                 String
+  types                PersonType[]
+  organization         String?
+  phone                String?
+  address              String?
+  email                String?      @unique
+  url                  String       @unique
+  logo                 String?
+  title                String?
+  additionalProperties String?
+  associatedCourses    Course[]
 }
 
 model Resource {
-  id           String   @default(cuid()) @id
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  description  String
-  url          String
-  tags         Tag[]
-  issuer       Issuer   @relation(name: "ResourceIssuer")
-  endorsements Issuer[] @relation(name: "ResourceEndorsements")
-  videoURL String?
-  tests UnitTest[]
+  id                  String     @default(cuid()) @id
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+  description         String
+  url                 String
+  tags                Tag[]
+  associatedPersonnel Person[]
+  videoURL            String?
+  tests               UnitTest[]
 }
 
 model UnitTest {
-  id           String   @default(cuid()) @id
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  title String?
-  text String?
+  id         String   @default(cuid()) @id
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  title      String?
+  text       String?
   testString String?
 }
 
 model Tag {
-  id                  String             @default(cuid()) @id
-  createdAt           DateTime           @default(now())
-  updatedAt           DateTime           @updatedAt
-  issuer              Issuer
+  id                  String       @default(cuid()) @id
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+  associatedPersonnel Person[]
   name                String
-  conceptualCategory  ConceptualCategory
-  orderWithinCategory Int
-}
-
-model ConceptualCategory {
-  id          String   @default(cuid()) @id
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  issuer      Issuer
-  name        String
-  description String
+  competencies        Competency[]
+  description         String
 }

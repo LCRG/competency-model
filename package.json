@@ -12,15 +12,15 @@
     "seed": "node -r esm prisma/seed && node -r esm prisma/loadFCC"
   },
   "dependencies": {
-    "@prisma/client": "2.0.0-preview021",
-    "apollo-server": "2.10.0",
+    "@prisma/client": "2.0.0-preview022",
+    "apollo-server": "2.10.1",
     "graphql": "14.6.0",
-    "nexus": "0.12.0-rc.11",
-    "nexus-prisma": "0.9.1",
+    "nexus": "0.12.0-rc.13",
+    "nexus-prisma": "0.10.0",
     "esm": "^3.2.25"
   },
   "devDependencies": {
-    "prisma2": "2.0.0-preview021"
+    "prisma2": "2.0.0-preview022"
   },
   "prettier": {
     "singleQuote": true,

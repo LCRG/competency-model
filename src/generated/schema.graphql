@@ -13,12 +13,6 @@ type Association {
   updatedAt: DateTime!
 }
 
-input AssociationFilter {
-  every: AssociationWhereInput
-  none: AssociationWhereInput
-  some: AssociationWhereInput
-}
-
 """Indicates the nature of association between instructional entities."""
 enum AssociationType {
   ExactMatchOf
@@ -33,21 +27,8 @@ enum AssociationType {
   ReplacedBy
 }
 
-input AssociationWhereInput {
-  additionalProperties: NullableStringFilter
-  AND: [AssociationWhereInput!]
-  associationType: AssociationType
-  certificate: CertificateWhereInput
-  competency: CompetencyWhereInput
-  course: CourseWhereInput
-  createdAt: DateTimeFilter
-  entityId: StringFilter
-  entityType: EntityType
-  id: StringFilter
-  NOT: [AssociationWhereInput!]
-  OR: [AssociationWhereInput!]
-  type: StringFilter
-  updatedAt: DateTimeFilter
+input AssociationWhereUniqueInput {
+  id: String
 }
 
 """
@@ -63,129 +44,62 @@ enum BloomLevel {
   UNDERSTAND
 }
 
-input CertificateFilter {
-  every: CertificateWhereInput
-  none: CertificateWhereInput
-  some: CertificateWhereInput
-}
-
-input CertificateWhereInput {
-  additionalProperties: NullableStringFilter
-  alternativeLabel: NullableStringFilter
-  AND: [CertificateWhereInput!]
-  areaOfStudy: NullableStringFilter
-  associations: AssociationFilter
-  createdAt: DateTimeFilter
-  defaultCredits: NullableStringFilter
-  defaultPoints: NullableStringFilter
-  description: NullableStringFilter
-  endorsements: IssuerFilter
-  id: StringFilter
-  issuer: IssuerWhereInput
-  level: NullableStringFilter
-  name: StringFilter
-  NOT: [CertificateWhereInput!]
-  OR: [CertificateWhereInput!]
-  sourcedId: NullableStringFilter
-  type: EntityType
-  updatedAt: DateTimeFilter
+type Certificate {
+  additionalProperties: String
+  alternativeLabel: String
+  areaOfStudy: String
+  associatedPersonnel(after: PersonWhereUniqueInput, before: PersonWhereUniqueInput, first: Int, last: Int, skip: Int): [Person!]!
+  associations(after: AssociationWhereUniqueInput, before: AssociationWhereUniqueInput, first: Int, last: Int, skip: Int): [Association!]!
+  createdAt: DateTime!
+  defaultCredits: String
+  defaultPoints: String
+  description: String
+  id: String!
+  level: String
+  name: String!
+  sourcedId: String
+  type: EntityType!
+  updatedAt: DateTime!
 }
 
 type Competency {
   additionalProperties: String
   alternativeLabel: String
-  associations(after: String, before: String, first: Int, last: Int, skip: Int): [Association!]!
+  associatedPersonnel(after: PersonWhereUniqueInput, before: PersonWhereUniqueInput, first: Int, last: Int, skip: Int): [Person!]!
+  associations(after: AssociationWhereUniqueInput, before: AssociationWhereUniqueInput, first: Int, last: Int, skip: Int): [Association!]!
   bloomCategory: BloomLevel
   CFDocumentURI: String
+  courses(after: CourseWhereUniqueInput, before: CourseWhereUniqueInput, first: Int, last: Int, skip: Int): [Course!]!
   createdAt: DateTime!
   defaultCredits: String
   defaultPoints: String
   description: String
-  endorsements(after: String, before: String, first: Int, last: Int, orderBy: IssuerOrderByInput, skip: Int, where: IssuerWhereInput): [Issuer!]!
   humanCodingScheme: String
   id: String!
-  issuer: Issuer!
   name: String!
-  resources(after: String, before: String, first: Int, last: Int, orderBy: ResourceOrderByInput, skip: Int, where: ResourceWhereInput): [Resource!]!
+  resources(after: ResourceWhereUniqueInput, before: ResourceWhereUniqueInput, first: Int, last: Int, skip: Int): [Resource!]!
   sourcedId: String
-  tags(after: String, before: String, first: Int, last: Int, orderBy: TagOrderByInput, skip: Int, where: TagWhereInput): [Tag!]!
+  tags(after: TagWhereUniqueInput, before: TagWhereUniqueInput, first: Int, last: Int, skip: Int): [Tag!]!
   type: EntityType!
   updatedAt: DateTime!
 }
 
-input CompetencyFilter {
-  every: CompetencyWhereInput
-  none: CompetencyWhereInput
-  some: CompetencyWhereInput
-}
-
-input CompetencyWhereInput {
-  additionalProperties: NullableStringFilter
-  alternativeLabel: NullableStringFilter
-  AND: [CompetencyWhereInput!]
-  associations: AssociationFilter
-  bloomCategory: BloomLevel
-  CFDocumentURI: NullableStringFilter
-  courses: CourseFilter
-  createdAt: DateTimeFilter
-  defaultCredits: NullableStringFilter
-  defaultPoints: NullableStringFilter
-  description: NullableStringFilter
-  endorsements: IssuerFilter
-  humanCodingScheme: NullableStringFilter
-  id: StringFilter
-  issuer: IssuerWhereInput
-  name: StringFilter
-  NOT: [CompetencyWhereInput!]
-  OR: [CompetencyWhereInput!]
-  resources: ResourceFilter
-  sourcedId: NullableStringFilter
-  tags: TagFilter
-  type: EntityType
-  updatedAt: DateTimeFilter
-}
-
-type ConceptualCategory {
-  createdAt: DateTime!
-  description: String!
-  id: String!
-  issuer: Issuer!
-  name: String!
-  updatedAt: DateTime!
-}
-
-input ConceptualCategoryFilter {
-  every: ConceptualCategoryWhereInput
-  none: ConceptualCategoryWhereInput
-  some: ConceptualCategoryWhereInput
-}
-
-input ConceptualCategoryWhereInput {
-  AND: [ConceptualCategoryWhereInput!]
-  createdAt: DateTimeFilter
-  description: StringFilter
-  id: StringFilter
-  issuer: IssuerWhereInput
-  name: StringFilter
-  NOT: [ConceptualCategoryWhereInput!]
-  OR: [ConceptualCategoryWhereInput!]
-  tags: TagFilter
-  updatedAt: DateTimeFilter
+input CompetencyWhereUniqueInput {
+  id: String
 }
 
 type Course {
   additionalProperties: String
   alternativeLabel: String
-  associations(after: String, before: String, first: Int, last: Int, skip: Int): [Association!]!
+  associatedPersonnel(after: PersonWhereUniqueInput, before: PersonWhereUniqueInput, first: Int, last: Int, skip: Int): [Person!]!
+  associations(after: AssociationWhereUniqueInput, before: AssociationWhereUniqueInput, first: Int, last: Int, skip: Int): [Association!]!
   courseCode: String!
   createdAt: DateTime!
   defaultCredits: String!
   defaultPoints: String
   description: String!
   endDate: DateTime
-  endorsements(after: String, before: String, first: Int, last: Int, orderBy: IssuerOrderByInput, skip: Int, where: IssuerWhereInput): [Issuer!]!
   id: String!
-  issuer: Issuer!
   name: String!
   sourcedId: String
   startDate: DateTime
@@ -194,49 +108,12 @@ type Course {
   updatedAt: DateTime!
 }
 
-input CourseFilter {
-  every: CourseWhereInput
-  none: CourseWhereInput
-  some: CourseWhereInput
-}
-
-input CourseWhereInput {
-  additionalProperties: NullableStringFilter
-  alternativeLabel: NullableStringFilter
-  AND: [CourseWhereInput!]
-  associations: AssociationFilter
-  competency: CompetencyWhereInput
-  courseCode: StringFilter
-  createdAt: DateTimeFilter
-  defaultCredits: StringFilter
-  defaultPoints: NullableStringFilter
-  description: StringFilter
-  endDate: NullableDateTimeFilter
-  endorsements: IssuerFilter
-  id: StringFilter
-  issuer: IssuerWhereInput
-  name: StringFilter
-  NOT: [CourseWhereInput!]
-  OR: [CourseWhereInput!]
-  sourcedId: NullableStringFilter
-  startDate: NullableDateTimeFilter
-  termsOffered: NullableStringFilter
-  type: EntityType
-  updatedAt: DateTimeFilter
+input CourseWhereUniqueInput {
+  courseCode: String
+  id: String
 }
 
 scalar DateTime
-
-input DateTimeFilter {
-  equals: DateTime
-  gt: DateTime
-  gte: DateTime
-  in: [DateTime!]
-  lt: DateTime
-  lte: DateTime
-  not: DateTime
-  notIn: [DateTime!]
-}
 
 """Indicates the type of the instructional entity."""
 enum EntityType {
@@ -249,210 +126,93 @@ enum EntityType {
   Degree
 }
 
-input IntFilter {
-  equals: Int
-  gt: Int
-  gte: Int
-  in: [Int!]
-  lt: Int
-  lte: Int
-  not: Int
-  notIn: [Int!]
-}
-
-type Issuer {
+type Person {
   additionalProperties: String
   address: String
+  associatedCourses(after: CourseWhereUniqueInput, before: CourseWhereUniqueInput, first: Int, last: Int, skip: Int): [Course!]!
   createdAt: DateTime!
+  email: String
   id: String!
-  issuingPersonFullName: String!
-  issuingPersonTitle: String!
   logo: String
   name: String!
+  organization: String
   phone: String
-  type: String!
+  title: String
+  types: [PersonType!]!
   updatedAt: DateTime!
   url: String!
 }
 
-input IssuerFilter {
-  every: IssuerWhereInput
-  none: IssuerWhereInput
-  some: IssuerWhereInput
+"""Indicates type of the Person or Organization"""
+enum PersonType {
+  AdjunctFaculty
+  CourseMentor
+  Employer
+  Endorser
+  Evaluator
+  Faculty
+  Instructor
+  Issuer
+  Owner
+  Provider
+  Representative
+  Teacher
+  TeachingAssistant
 }
 
-input IssuerOrderByInput {
-  additionalProperties: OrderByArg
-  address: OrderByArg
-  createdAt: OrderByArg
-  id: OrderByArg
-  issuingPersonFullName: OrderByArg
-  issuingPersonTitle: OrderByArg
-  logo: OrderByArg
-  name: OrderByArg
-  phone: OrderByArg
-  type: OrderByArg
-  updatedAt: OrderByArg
-  url: OrderByArg
-}
-
-input IssuerWhereInput {
-  additionalProperties: NullableStringFilter
-  address: NullableStringFilter
-  AND: [IssuerWhereInput!]
-  certificate: CertificateWhereInput
-  certificates: CertificateFilter
-  competencies: CompetencyFilter
-  competency: CompetencyWhereInput
-  conceptualCategories: ConceptualCategoryFilter
-  course: CourseWhereInput
-  courses: CourseFilter
-  createdAt: DateTimeFilter
-  id: StringFilter
-  issuingPersonFullName: StringFilter
-  issuingPersonTitle: StringFilter
-  logo: NullableStringFilter
-  name: StringFilter
-  NOT: [IssuerWhereInput!]
-  OR: [IssuerWhereInput!]
-  phone: NullableStringFilter
-  resource: ResourceWhereInput
-  resources: ResourceFilter
-  tags: TagFilter
-  type: StringFilter
-  updatedAt: DateTimeFilter
-  url: StringFilter
-}
-
-input NullableDateTimeFilter {
-  equals: DateTime
-  gt: DateTime
-  gte: DateTime
-  in: [DateTime!]
-  lt: DateTime
-  lte: DateTime
-  not: DateTime
-  notIn: [DateTime!]
-}
-
-input NullableStringFilter {
-  contains: String
-  endsWith: String
-  equals: String
-  gt: String
-  gte: String
-  in: [String!]
-  lt: String
-  lte: String
-  not: String
-  notIn: [String!]
-  startsWith: String
-}
-
-enum OrderByArg {
-  asc
-  desc
+input PersonWhereUniqueInput {
+  email: String
+  id: String
+  url: String
 }
 
 type Query {
-  Competencies: [Competency!]!
+  Competencies(searchString: String): [Competency!]!
   Competency(id: ID): Competency
   Course(id: ID): Course
   courseByCourseCode(courseCode: String): Course
-  Courses: [Course!]!
-  filterCompetencies(searchString: String): [Competency!]!
-  filterCourses(searchString: String): [Course!]!
+  Courses(searchString: String): [Course!]!
 }
 
 type Resource {
+  associatedPersonnel(after: PersonWhereUniqueInput, before: PersonWhereUniqueInput, first: Int, last: Int, skip: Int): [Person!]!
   createdAt: DateTime!
   description: String!
-  endorsements(after: String, before: String, first: Int, last: Int, skip: Int): [Issuer!]!
   id: String!
-  issuer: Issuer!
-  tags(after: String, before: String, first: Int, last: Int, skip: Int): [Tag!]!
+  tags(after: TagWhereUniqueInput, before: TagWhereUniqueInput, first: Int, last: Int, skip: Int): [Tag!]!
+  tests(after: UnitTestWhereUniqueInput, before: UnitTestWhereUniqueInput, first: Int, last: Int, skip: Int): [UnitTest!]!
   updatedAt: DateTime!
   url: String!
+  videoURL: String
 }
 
-input ResourceFilter {
-  every: ResourceWhereInput
-  none: ResourceWhereInput
-  some: ResourceWhereInput
-}
-
-input ResourceOrderByInput {
-  createdAt: OrderByArg
-  description: OrderByArg
-  id: OrderByArg
-  updatedAt: OrderByArg
-  url: OrderByArg
-}
-
-input ResourceWhereInput {
-  AND: [ResourceWhereInput!]
-  competency: CompetencyWhereInput
-  createdAt: DateTimeFilter
-  description: StringFilter
-  endorsements: IssuerFilter
-  id: StringFilter
-  issuer: IssuerWhereInput
-  NOT: [ResourceWhereInput!]
-  OR: [ResourceWhereInput!]
-  tags: TagFilter
-  updatedAt: DateTimeFilter
-  url: StringFilter
-}
-
-input StringFilter {
-  contains: String
-  endsWith: String
-  equals: String
-  gt: String
-  gte: String
-  in: [String!]
-  lt: String
-  lte: String
-  not: String
-  notIn: [String!]
-  startsWith: String
+input ResourceWhereUniqueInput {
+  id: String
 }
 
 type Tag {
-  conceptualCategory: ConceptualCategory!
+  associatedPersonnel(after: PersonWhereUniqueInput, before: PersonWhereUniqueInput, first: Int, last: Int, skip: Int): [Person!]!
+  competencies(after: CompetencyWhereUniqueInput, before: CompetencyWhereUniqueInput, first: Int, last: Int, skip: Int): [Competency!]!
   createdAt: DateTime!
+  description: String!
   id: String!
-  issuer: Issuer!
   name: String!
-  orderWithinCategory: Int!
   updatedAt: DateTime!
 }
 
-input TagFilter {
-  every: TagWhereInput
-  none: TagWhereInput
-  some: TagWhereInput
+input TagWhereUniqueInput {
+  id: String
 }
 
-input TagOrderByInput {
-  createdAt: OrderByArg
-  id: OrderByArg
-  name: OrderByArg
-  orderWithinCategory: OrderByArg
-  updatedAt: OrderByArg
+type UnitTest {
+  createdAt: DateTime!
+  id: String!
+  testString: String
+  text: String
+  title: String
+  updatedAt: DateTime!
 }
 
-input TagWhereInput {
-  AND: [TagWhereInput!]
-  competency: CompetencyWhereInput
-  conceptualCategory: ConceptualCategoryWhereInput
-  createdAt: DateTimeFilter
-  id: StringFilter
-  issuer: IssuerWhereInput
-  name: StringFilter
-  NOT: [TagWhereInput!]
-  OR: [TagWhereInput!]
-  orderWithinCategory: IntFilter
-  resource: ResourceWhereInput
-  updatedAt: DateTimeFilter
+input UnitTestWhereUniqueInput {
+  id: String
 }

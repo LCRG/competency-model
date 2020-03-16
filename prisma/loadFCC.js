@@ -53,12 +53,7 @@ async function loadAllChallenges() {
             name: challenge.title,
             description: challenge.description,
             sourcedId: challenge.id,
-            issuer: {
-              connect: {
-                url: 'https://www.freecodecamp.org/',
-              },
-            },
-            endorsements: {
+            associatedPersonnel: {
               connect: {
                 url: 'https://www.freecodecamp.org/',
               },

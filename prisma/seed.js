@@ -7,68 +7,68 @@ const prismaClient = new PrismaClient()
 
 const issuers = [
   {
-    name: 'freeCodeCamp',
+    organization: 'freeCodeCamp',
+    name: 'Jennifer McBride',
     url: 'https://www.freecodecamp.org/',
     logo: '../../assets/fcc-glyph.jpg',
-    issuingPersonFullName: 'freeCodeCamp',
-    issuingPersonTitle: 'Unknown',
-    type: 'Provider',
+    title: 'Curriculum Designer',
+    types: ['Provider'],
   },
   {
-    name: 'Utah Valley University',
+    organization: 'Utah Valley University',
     url: 'https://www.uvu.edu/',
     logo: '../../assets/uvu.png',
-    issuingPersonFullName: 'Jane Smith',
-    issuingPersonTitle: 'Instructional Designer',
-    type: 'Provider',
+    name: 'Jane Smith',
+    title: 'Instructional Designer',
+    types: ['Provider'],
   },
   {
-    name: 'Neumont College of Computer Science',
+    organization: 'Neumont College of Computer Science',
     url: 'https://www.neumont.edu/',
     logo: '../../assets/neumont.png',
-    issuingPersonFullName: 'Britta Holt',
-    issuingPersonTitle: 'Director, Career Services',
-    type: 'Provider',
+    name: 'Britta Holt',
+    title: 'Director, Career Services',
+    types: ['Provider'],
   },
   {
-    name: 'Pluralsight',
+    organization: 'Pluralsight',
     url: 'https://www.pluralsight.com/',
     logo: '../../assets/pluralsight.png',
-    issuingPersonFullName: 'John Smith',
-    issuingPersonTitle: 'Curriculum Designer',
-    type: 'Provider',
+    name: 'John Smith',
+    title: 'Curriculum Designer',
+    types: ['Provider'],
   },
   {
-    name: 'Helio Training',
+    organization: 'Helio Training',
     url: 'https://www.heliotraining.com/',
     logo: '../../assets/helio.png',
-    issuingPersonFullName: 'Sandra Williams',
-    issuingPersonTitle: 'Lead Instructor',
-    type: 'Provider',
+    name: 'Sandra Williams',
+    title: 'Lead Instructor',
+    types: ['Provider'],
   },
   {
-    name: 'Pluralsight',
+    organization: 'Pluralsight',
     url: 'https://www.pluralsight.com/hr/',
     logo: '../../assets/pluralsight.png',
-    issuingPersonFullName: 'Trevor Hansen',
-    issuingPersonTitle: 'Talent Acquisition',
-    type: 'Employer',
+    name: 'Trevor Hansen',
+    title: 'Talent Acquisition',
+    types: ['Employer'],
   },
   {
-    name: 'Adobe',
+    organization: 'Adobe',
     url: 'https://www.adobe.com/',
     logo: '../../assets/adobe.png',
-    issuingPersonFullName: 'Sandra Adams',
-    issuingPersonTitle: 'Engineering Hiring Manager',
-    type: 'Employer',
+    name: 'Sandra Adams',
+    title: 'Engineering Hiring Manager',
+    types: ['Employer'],
   },
   {
-    name: 'Ebay',
+    organization: 'Ebay',
     url: 'https://www.ebay.com/',
     logo: '../../assets/ebay.png',
-    issuingPersonFullName: 'Ali Connors',
-    issuingPersonTitle: 'Lead Recruiter',
-    type: 'Employer',
+    name: 'Ali Connors',
+    title: 'Lead Recruiter',
+    types: ['Employer'],
   },
 ]
 
@@ -76,16 +76,19 @@ async function createIssuers() {
   const  mappedIssuers = issuers.map(i => {
     return {
       data: {
+        organization: i.organization,
         name: i.name,
         url: i.url,
         logo: i.logo,
-        issuingPersonFullName: i.issuingPersonFullName,
-        issuingPersonTitle: i.issuingPersonTitle,
+        title: i.title,
+        types: {
+          set: i.types
+        }
       }
     }
   })
   for (let mpdIssuer of mappedIssuers) {
-  await prismaClient.issuer
+  await prismaClient.person
     .create(mpdIssuer)
     .catch(err =>
       console.log(
@@ -113,12 +116,7 @@ function loadUVUCourses() {
         description: crs.description._text,
         defaultCredits: crs.totalCredits._text,
         courseCode: `${crs.prefix._text} ${crs.number._text}`,
-        issuer: {
-          connect: {
-            url: 'https://www.uvu.edu/',
-          },
-        },
-        endorsements: {
+        associatedPersonnel: {
           connect: {
             url: 'https://www.uvu.edu/',
           },
@@ -127,7 +125,6 @@ function loadUVUCourses() {
         additionalProperties: JSON.stringify({
           prefix: crs.prefix._text,
           subject: crs.subject._text,
-          termsOffered: crs.termsOffered._text,
           prereq: crs.prereq._text,
           coreq: crs.coreq._text,
         }),

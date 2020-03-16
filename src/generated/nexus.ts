@@ -19,83 +19,28 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  AssociationFilter: { // input type
-    every?: NexusGenInputs['AssociationWhereInput'] | null; // AssociationWhereInput
-    none?: NexusGenInputs['AssociationWhereInput'] | null; // AssociationWhereInput
-    some?: NexusGenInputs['AssociationWhereInput'] | null; // AssociationWhereInput
+  AssociationWhereUniqueInput: { // input type
+    id?: string | null; // String
   }
-  AssociationWhereInput: { // input type
-    additionalProperties?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    AND?: NexusGenInputs['AssociationWhereInput'][] | null; // [AssociationWhereInput!]
-    associationType?: NexusGenEnums['AssociationType'] | null; // AssociationType
-    certificate?: NexusGenInputs['CertificateWhereInput'] | null; // CertificateWhereInput
-    competency?: NexusGenInputs['CompetencyWhereInput'] | null; // CompetencyWhereInput
-    course?: NexusGenInputs['CourseWhereInput'] | null; // CourseWhereInput
-    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    entityId?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    entityType?: NexusGenEnums['EntityType'] | null; // EntityType
-    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    NOT?: NexusGenInputs['AssociationWhereInput'][] | null; // [AssociationWhereInput!]
-    OR?: NexusGenInputs['AssociationWhereInput'][] | null; // [AssociationWhereInput!]
-    type?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+  CompetencyWhereUniqueInput: { // input type
+    id?: string | null; // String
   }
-  CertificateFilter: { // input type
-    every?: NexusGenInputs['CertificateWhereInput'] | null; // CertificateWhereInput
-    none?: NexusGenInputs['CertificateWhereInput'] | null; // CertificateWhereInput
-    some?: NexusGenInputs['CertificateWhereInput'] | null; // CertificateWhereInput
+  CourseWhereUniqueInput: { // input type
+    courseCode?: string | null; // String
+    id?: string | null; // String
   }
-  CertificateWhereInput: { // input type
-    additionalProperties?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    alternativeLabel?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    AND?: NexusGenInputs['CertificateWhereInput'][] | null; // [CertificateWhereInput!]
-    areaOfStudy?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    associations?: NexusGenInputs['AssociationFilter'] | null; // AssociationFilter
-    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    defaultCredits?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    defaultPoints?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    description?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    endorsements?: NexusGenInputs['IssuerFilter'] | null; // IssuerFilter
-    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    issuer?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
-    level?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    NOT?: NexusGenInputs['CertificateWhereInput'][] | null; // [CertificateWhereInput!]
-    OR?: NexusGenInputs['CertificateWhereInput'][] | null; // [CertificateWhereInput!]
-    sourcedId?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    type?: NexusGenEnums['EntityType'] | null; // EntityType
-    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+  PersonWhereUniqueInput: { // input type
+    email?: string | null; // String
+    id?: string | null; // String
+    url?: string | null; // String
   }
-  CompetencyFilter: { // input type
-    every?: NexusGenInputs['CompetencyWhereInput'] | null; // CompetencyWhereInput
-    none?: NexusGenInputs['CompetencyWhereInput'] | null; // CompetencyWhereInput
-    some?: NexusGenInputs['CompetencyWhereInput'] | null; // CompetencyWhereInput
+  ResourceWhereUniqueInput: { // input type
+    id?: string | null; // String
   }
-  CompetencyWhereInput: { // input type
-    additionalProperties?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    alternativeLabel?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    AND?: NexusGenInputs['CompetencyWhereInput'][] | null; // [CompetencyWhereInput!]
-    associations?: NexusGenInputs['AssociationFilter'] | null; // AssociationFilter
-    bloomCategory?: NexusGenEnums['BloomLevel'] | null; // BloomLevel
-    CFDocumentURI?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    courses?: NexusGenInputs['CourseFilter'] | null; // CourseFilter
-    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    defaultCredits?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    defaultPoints?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    description?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    endorsements?: NexusGenInputs['IssuerFilter'] | null; // IssuerFilter
-    humanCodingScheme?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    issuer?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
-    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    NOT?: NexusGenInputs['CompetencyWhereInput'][] | null; // [CompetencyWhereInput!]
-    OR?: NexusGenInputs['CompetencyWhereInput'][] | null; // [CompetencyWhereInput!]
-    resources?: NexusGenInputs['ResourceFilter'] | null; // ResourceFilter
-    sourcedId?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    tags?: NexusGenInputs['TagFilter'] | null; // TagFilter
-    type?: NexusGenEnums['EntityType'] | null; // EntityType
-    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+  TagWhereUniqueInput: { // input type
+    id?: string | null; // String
   }
+<<<<<<< HEAD
   ConceptualCategoryFilter: { // input type
     every?: NexusGenInputs['ConceptualCategoryWhereInput'] | null; // ConceptualCategoryWhereInput
     none?: NexusGenInputs['ConceptualCategoryWhereInput'] | null; // ConceptualCategoryWhereInput
@@ -298,6 +243,10 @@ export interface NexusGenInputs {
     orderWithinCategory?: NexusGenInputs['IntFilter'] | null; // IntFilter
     resource?: NexusGenInputs['ResourceWhereInput'] | null; // ResourceWhereInput
     updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+=======
+  UnitTestWhereUniqueInput: { // input type
+    id?: string | null; // String
+>>>>>>> c4bd400baa30248bab1c466299ce8a396a6dc5cf
   }
   UnitTestFilter: { // input type
     every?: NexusGenInputs['UnitTestWhereInput'] | null; // UnitTestWhereInput
@@ -322,18 +271,19 @@ export interface NexusGenEnums {
   AssociationType: prisma.AssociationType
   BloomLevel: prisma.BloomLevel
   EntityType: prisma.EntityType
-  OrderByArg: prisma.OrderByArg
+  PersonType: prisma.PersonType
 }
 
 export interface NexusGenRootTypes {
   Association: prisma.Association;
+  Certificate: prisma.Certificate;
   Competency: prisma.Competency;
-  ConceptualCategory: prisma.ConceptualCategory;
   Course: prisma.Course;
-  Issuer: prisma.Issuer;
+  Person: prisma.Person;
   Query: {};
   Resource: prisma.Resource;
   Tag: prisma.Tag;
+  UnitTest: prisma.UnitTest;
   String: string;
   Int: number;
   Float: number;
@@ -343,6 +293,7 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+<<<<<<< HEAD
   AssociationFilter: NexusGenInputs['AssociationFilter'];
   AssociationWhereInput: NexusGenInputs['AssociationWhereInput'];
   CertificateFilter: NexusGenInputs['CertificateFilter'];
@@ -369,10 +320,19 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   TagWhereInput: NexusGenInputs['TagWhereInput'];
   UnitTestFilter: NexusGenInputs['UnitTestFilter'];
   UnitTestWhereInput: NexusGenInputs['UnitTestWhereInput'];
+=======
+  AssociationWhereUniqueInput: NexusGenInputs['AssociationWhereUniqueInput'];
+  CompetencyWhereUniqueInput: NexusGenInputs['CompetencyWhereUniqueInput'];
+  CourseWhereUniqueInput: NexusGenInputs['CourseWhereUniqueInput'];
+  PersonWhereUniqueInput: NexusGenInputs['PersonWhereUniqueInput'];
+  ResourceWhereUniqueInput: NexusGenInputs['ResourceWhereUniqueInput'];
+  TagWhereUniqueInput: NexusGenInputs['TagWhereUniqueInput'];
+  UnitTestWhereUniqueInput: NexusGenInputs['UnitTestWhereUniqueInput'];
+>>>>>>> c4bd400baa30248bab1c466299ce8a396a6dc5cf
   AssociationType: NexusGenEnums['AssociationType'];
   BloomLevel: NexusGenEnums['BloomLevel'];
   EntityType: NexusGenEnums['EntityType'];
-  OrderByArg: NexusGenEnums['OrderByArg'];
+  PersonType: NexusGenEnums['PersonType'];
 }
 
 export interface NexusGenFieldTypes {
@@ -386,20 +346,37 @@ export interface NexusGenFieldTypes {
     type: string; // String!
     updatedAt: any; // DateTime!
   }
-  Competency: { // field return type
+  Certificate: { // field return type
     additionalProperties: string | null; // String
     alternativeLabel: string | null; // String
+    areaOfStudy: string | null; // String
+    associatedPersonnel: NexusGenRootTypes['Person'][]; // [Person!]!
     associations: NexusGenRootTypes['Association'][]; // [Association!]!
-    bloomCategory: NexusGenEnums['BloomLevel'] | null; // BloomLevel
-    CFDocumentURI: string | null; // String
     createdAt: any; // DateTime!
     defaultCredits: string | null; // String
     defaultPoints: string | null; // String
     description: string | null; // String
-    endorsements: NexusGenRootTypes['Issuer'][]; // [Issuer!]!
+    id: string; // String!
+    level: string | null; // String
+    name: string; // String!
+    sourcedId: string | null; // String
+    type: NexusGenEnums['EntityType']; // EntityType!
+    updatedAt: any; // DateTime!
+  }
+  Competency: { // field return type
+    additionalProperties: string | null; // String
+    alternativeLabel: string | null; // String
+    associatedPersonnel: NexusGenRootTypes['Person'][]; // [Person!]!
+    associations: NexusGenRootTypes['Association'][]; // [Association!]!
+    bloomCategory: NexusGenEnums['BloomLevel'] | null; // BloomLevel
+    CFDocumentURI: string | null; // String
+    courses: NexusGenRootTypes['Course'][]; // [Course!]!
+    createdAt: any; // DateTime!
+    defaultCredits: string | null; // String
+    defaultPoints: string | null; // String
+    description: string | null; // String
     humanCodingScheme: string | null; // String
     id: string; // String!
-    issuer: NexusGenRootTypes['Issuer']; // Issuer!
     name: string; // String!
     resources: NexusGenRootTypes['Resource'][]; // [Resource!]!
     sourcedId: string | null; // String
@@ -407,17 +384,10 @@ export interface NexusGenFieldTypes {
     type: NexusGenEnums['EntityType']; // EntityType!
     updatedAt: any; // DateTime!
   }
-  ConceptualCategory: { // field return type
-    createdAt: any; // DateTime!
-    description: string; // String!
-    id: string; // String!
-    issuer: NexusGenRootTypes['Issuer']; // Issuer!
-    name: string; // String!
-    updatedAt: any; // DateTime!
-  }
   Course: { // field return type
     additionalProperties: string | null; // String
     alternativeLabel: string | null; // String
+    associatedPersonnel: NexusGenRootTypes['Person'][]; // [Person!]!
     associations: NexusGenRootTypes['Association'][]; // [Association!]!
     courseCode: string; // String!
     createdAt: any; // DateTime!
@@ -425,9 +395,7 @@ export interface NexusGenFieldTypes {
     defaultPoints: string | null; // String
     description: string; // String!
     endDate: any | null; // DateTime
-    endorsements: NexusGenRootTypes['Issuer'][]; // [Issuer!]!
     id: string; // String!
-    issuer: NexusGenRootTypes['Issuer']; // Issuer!
     name: string; // String!
     sourcedId: string | null; // String
     startDate: any | null; // DateTime
@@ -435,17 +403,19 @@ export interface NexusGenFieldTypes {
     type: NexusGenEnums['EntityType']; // EntityType!
     updatedAt: any; // DateTime!
   }
-  Issuer: { // field return type
+  Person: { // field return type
     additionalProperties: string | null; // String
     address: string | null; // String
+    associatedCourses: NexusGenRootTypes['Course'][]; // [Course!]!
     createdAt: any; // DateTime!
+    email: string | null; // String
     id: string; // String!
-    issuingPersonFullName: string; // String!
-    issuingPersonTitle: string; // String!
     logo: string | null; // String
     name: string; // String!
+    organization: string | null; // String
     phone: string | null; // String
-    type: string; // String!
+    title: string | null; // String
+    types: NexusGenEnums['PersonType'][]; // [PersonType!]!
     updatedAt: any; // DateTime!
     url: string; // String!
   }
@@ -455,86 +425,120 @@ export interface NexusGenFieldTypes {
     Course: NexusGenRootTypes['Course'] | null; // Course
     courseByCourseCode: NexusGenRootTypes['Course'] | null; // Course
     Courses: NexusGenRootTypes['Course'][]; // [Course!]!
-    filterCompetencies: NexusGenRootTypes['Competency'][]; // [Competency!]!
-    filterCourses: NexusGenRootTypes['Course'][]; // [Course!]!
   }
   Resource: { // field return type
+    associatedPersonnel: NexusGenRootTypes['Person'][]; // [Person!]!
     createdAt: any; // DateTime!
     description: string; // String!
-    endorsements: NexusGenRootTypes['Issuer'][]; // [Issuer!]!
     id: string; // String!
-    issuer: NexusGenRootTypes['Issuer']; // Issuer!
     tags: NexusGenRootTypes['Tag'][]; // [Tag!]!
+    tests: NexusGenRootTypes['UnitTest'][]; // [UnitTest!]!
     updatedAt: any; // DateTime!
     url: string; // String!
+    videoURL: string | null; // String
   }
   Tag: { // field return type
-    conceptualCategory: NexusGenRootTypes['ConceptualCategory']; // ConceptualCategory!
+    associatedPersonnel: NexusGenRootTypes['Person'][]; // [Person!]!
+    competencies: NexusGenRootTypes['Competency'][]; // [Competency!]!
+    createdAt: any; // DateTime!
+    description: string; // String!
+    id: string; // String!
+    name: string; // String!
+    updatedAt: any; // DateTime!
+  }
+  UnitTest: { // field return type
     createdAt: any; // DateTime!
     id: string; // String!
-    issuer: NexusGenRootTypes['Issuer']; // Issuer!
-    name: string; // String!
-    orderWithinCategory: number; // Int!
+    testString: string | null; // String
+    text: string | null; // String
+    title: string | null; // String
     updatedAt: any; // DateTime!
   }
 }
 
 export interface NexusGenArgTypes {
-  Competency: {
-    associations: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+  Certificate: {
+    associatedPersonnel: { // args
+      after?: NexusGenInputs['PersonWhereUniqueInput'] | null; // PersonWhereUniqueInput
+      before?: NexusGenInputs['PersonWhereUniqueInput'] | null; // PersonWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       skip?: number | null; // Int
     }
-    endorsements: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+    associations: { // args
+      after?: NexusGenInputs['AssociationWhereUniqueInput'] | null; // AssociationWhereUniqueInput
+      before?: NexusGenInputs['AssociationWhereUniqueInput'] | null; // AssociationWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenInputs['IssuerOrderByInput'] | null; // IssuerOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
+    }
+  }
+  Competency: {
+    associatedPersonnel: { // args
+      after?: NexusGenInputs['PersonWhereUniqueInput'] | null; // PersonWhereUniqueInput
+      before?: NexusGenInputs['PersonWhereUniqueInput'] | null; // PersonWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+    associations: { // args
+      after?: NexusGenInputs['AssociationWhereUniqueInput'] | null; // AssociationWhereUniqueInput
+      before?: NexusGenInputs['AssociationWhereUniqueInput'] | null; // AssociationWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+    courses: { // args
+      after?: NexusGenInputs['CourseWhereUniqueInput'] | null; // CourseWhereUniqueInput
+      before?: NexusGenInputs['CourseWhereUniqueInput'] | null; // CourseWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
     }
     resources: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+      after?: NexusGenInputs['ResourceWhereUniqueInput'] | null; // ResourceWhereUniqueInput
+      before?: NexusGenInputs['ResourceWhereUniqueInput'] | null; // ResourceWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenInputs['ResourceOrderByInput'] | null; // ResourceOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['ResourceWhereInput'] | null; // ResourceWhereInput
     }
     tags: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+      after?: NexusGenInputs['TagWhereUniqueInput'] | null; // TagWhereUniqueInput
+      before?: NexusGenInputs['TagWhereUniqueInput'] | null; // TagWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenInputs['TagOrderByInput'] | null; // TagOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['TagWhereInput'] | null; // TagWhereInput
     }
   }
   Course: {
-    associations: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+    associatedPersonnel: { // args
+      after?: NexusGenInputs['PersonWhereUniqueInput'] | null; // PersonWhereUniqueInput
+      before?: NexusGenInputs['PersonWhereUniqueInput'] | null; // PersonWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       skip?: number | null; // Int
     }
-    endorsements: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+    associations: { // args
+      after?: NexusGenInputs['AssociationWhereUniqueInput'] | null; // AssociationWhereUniqueInput
+      before?: NexusGenInputs['AssociationWhereUniqueInput'] | null; // AssociationWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenInputs['IssuerOrderByInput'] | null; // IssuerOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['IssuerWhereInput'] | null; // IssuerWhereInput
+    }
+  }
+  Person: {
+    associatedCourses: { // args
+      after?: NexusGenInputs['CourseWhereUniqueInput'] | null; // CourseWhereUniqueInput
+      before?: NexusGenInputs['CourseWhereUniqueInput'] | null; // CourseWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
     }
   }
   Query: {
+    Competencies: { // args
+      searchString?: string | null; // String
+    }
     Competency: { // args
       id?: string | null; // ID
     }
@@ -544,24 +548,44 @@ export interface NexusGenArgTypes {
     courseByCourseCode: { // args
       courseCode?: string | null; // String
     }
-    filterCompetencies: { // args
-      searchString?: string | null; // String
-    }
-    filterCourses: { // args
+    Courses: { // args
       searchString?: string | null; // String
     }
   }
   Resource: {
-    endorsements: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+    associatedPersonnel: { // args
+      after?: NexusGenInputs['PersonWhereUniqueInput'] | null; // PersonWhereUniqueInput
+      before?: NexusGenInputs['PersonWhereUniqueInput'] | null; // PersonWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       skip?: number | null; // Int
     }
     tags: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+      after?: NexusGenInputs['TagWhereUniqueInput'] | null; // TagWhereUniqueInput
+      before?: NexusGenInputs['TagWhereUniqueInput'] | null; // TagWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+    tests: { // args
+      after?: NexusGenInputs['UnitTestWhereUniqueInput'] | null; // UnitTestWhereUniqueInput
+      before?: NexusGenInputs['UnitTestWhereUniqueInput'] | null; // UnitTestWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+  }
+  Tag: {
+    associatedPersonnel: { // args
+      after?: NexusGenInputs['PersonWhereUniqueInput'] | null; // PersonWhereUniqueInput
+      before?: NexusGenInputs['PersonWhereUniqueInput'] | null; // PersonWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+    competencies: { // args
+      after?: NexusGenInputs['CompetencyWhereUniqueInput'] | null; // CompetencyWhereUniqueInput
+      before?: NexusGenInputs['CompetencyWhereUniqueInput'] | null; // CompetencyWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       skip?: number | null; // Int
@@ -574,11 +598,15 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Association" | "Competency" | "ConceptualCategory" | "Course" | "Issuer" | "Query" | "Resource" | "Tag";
+export type NexusGenObjectNames = "Association" | "Certificate" | "Competency" | "Course" | "Person" | "Query" | "Resource" | "Tag" | "UnitTest";
 
+<<<<<<< HEAD
 export type NexusGenInputNames = "AssociationFilter" | "AssociationWhereInput" | "CertificateFilter" | "CertificateWhereInput" | "CompetencyFilter" | "CompetencyWhereInput" | "ConceptualCategoryFilter" | "ConceptualCategoryWhereInput" | "CourseFilter" | "CourseWhereInput" | "DateTimeFilter" | "IntFilter" | "IssuerFilter" | "IssuerOrderByInput" | "IssuerWhereInput" | "NullableDateTimeFilter" | "NullableStringFilter" | "ResourceFilter" | "ResourceOrderByInput" | "ResourceWhereInput" | "StringFilter" | "TagFilter" | "TagOrderByInput" | "TagWhereInput" | "UnitTestFilter" | "UnitTestWhereInput";
+=======
+export type NexusGenInputNames = "AssociationWhereUniqueInput" | "CompetencyWhereUniqueInput" | "CourseWhereUniqueInput" | "PersonWhereUniqueInput" | "ResourceWhereUniqueInput" | "TagWhereUniqueInput" | "UnitTestWhereUniqueInput";
+>>>>>>> c4bd400baa30248bab1c466299ce8a396a6dc5cf
 
-export type NexusGenEnumNames = "AssociationType" | "BloomLevel" | "EntityType" | "OrderByArg";
+export type NexusGenEnumNames = "AssociationType" | "BloomLevel" | "EntityType" | "PersonType";
 
 export type NexusGenInterfaceNames = never;
 

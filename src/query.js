@@ -23,19 +23,12 @@ export const Query = queryType({
         return ctx.prisma.course.findOne({
           where: {
             courseCode,
-          }
+          },
         })
-      }
-    })
-
-    t.list.field('Courses', {
-      type: 'Course',
-      resolve: (parent, args, ctx) => {
-        return ctx.prisma.course.findMany()
       },
     })
 
-    t.list.field('filterCourses', {
+    t.list.field('Courses', {
       type: 'Course',
       args: {
         searchString: stringArg({ nullable: true }),
@@ -66,13 +59,6 @@ export const Query = queryType({
     })
 
     t.list.field('Competencies', {
-      type: 'Competency',
-      resolve: (parent, args, ctx) => {
-        return ctx.prisma.competency.findMany()
-      },
-    })
-
-    t.list.field('filterCompetencies', {
       type: 'Competency',
       args: {
         searchString: stringArg({ nullable: true }),

@@ -387,6 +387,7 @@ input ResourceOrderByInput {
   id: OrderByArg
   updatedAt: OrderByArg
   url: OrderByArg
+  videoURL: OrderByArg
 }
 
 input ResourceWhereInput {
@@ -400,8 +401,10 @@ input ResourceWhereInput {
   NOT: [ResourceWhereInput!]
   OR: [ResourceWhereInput!]
   tags: TagFilter
+  tests: UnitTestFilter
   updatedAt: DateTimeFilter
   url: StringFilter
+  videoURL: NullableStringFilter
 }
 
 input StringFilter {
@@ -454,5 +457,24 @@ input TagWhereInput {
   OR: [TagWhereInput!]
   orderWithinCategory: IntFilter
   resource: ResourceWhereInput
+  updatedAt: DateTimeFilter
+}
+
+input UnitTestFilter {
+  every: UnitTestWhereInput
+  none: UnitTestWhereInput
+  some: UnitTestWhereInput
+}
+
+input UnitTestWhereInput {
+  AND: [UnitTestWhereInput!]
+  createdAt: DateTimeFilter
+  id: StringFilter
+  NOT: [UnitTestWhereInput!]
+  OR: [UnitTestWhereInput!]
+  resource: ResourceWhereInput
+  testString: NullableStringFilter
+  text: NullableStringFilter
+  title: NullableStringFilter
   updatedAt: DateTimeFilter
 }

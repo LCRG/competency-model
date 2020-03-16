@@ -242,6 +242,7 @@ export interface NexusGenInputs {
     id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     updatedAt?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     url?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    videoURL?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
   }
   ResourceWhereInput: { // input type
     AND?: NexusGenInputs['ResourceWhereInput'][] | null; // [ResourceWhereInput!]
@@ -254,8 +255,10 @@ export interface NexusGenInputs {
     NOT?: NexusGenInputs['ResourceWhereInput'][] | null; // [ResourceWhereInput!]
     OR?: NexusGenInputs['ResourceWhereInput'][] | null; // [ResourceWhereInput!]
     tags?: NexusGenInputs['TagFilter'] | null; // TagFilter
+    tests?: NexusGenInputs['UnitTestFilter'] | null; // UnitTestFilter
     updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
     url?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    videoURL?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
   }
   StringFilter: { // input type
     contains?: string | null; // String
@@ -294,6 +297,23 @@ export interface NexusGenInputs {
     OR?: NexusGenInputs['TagWhereInput'][] | null; // [TagWhereInput!]
     orderWithinCategory?: NexusGenInputs['IntFilter'] | null; // IntFilter
     resource?: NexusGenInputs['ResourceWhereInput'] | null; // ResourceWhereInput
+    updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+  }
+  UnitTestFilter: { // input type
+    every?: NexusGenInputs['UnitTestWhereInput'] | null; // UnitTestWhereInput
+    none?: NexusGenInputs['UnitTestWhereInput'] | null; // UnitTestWhereInput
+    some?: NexusGenInputs['UnitTestWhereInput'] | null; // UnitTestWhereInput
+  }
+  UnitTestWhereInput: { // input type
+    AND?: NexusGenInputs['UnitTestWhereInput'][] | null; // [UnitTestWhereInput!]
+    createdAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['UnitTestWhereInput'][] | null; // [UnitTestWhereInput!]
+    OR?: NexusGenInputs['UnitTestWhereInput'][] | null; // [UnitTestWhereInput!]
+    resource?: NexusGenInputs['ResourceWhereInput'] | null; // ResourceWhereInput
+    testString?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    text?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    title?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
     updatedAt?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
   }
 }
@@ -347,6 +367,8 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   TagFilter: NexusGenInputs['TagFilter'];
   TagOrderByInput: NexusGenInputs['TagOrderByInput'];
   TagWhereInput: NexusGenInputs['TagWhereInput'];
+  UnitTestFilter: NexusGenInputs['UnitTestFilter'];
+  UnitTestWhereInput: NexusGenInputs['UnitTestWhereInput'];
   AssociationType: NexusGenEnums['AssociationType'];
   BloomLevel: NexusGenEnums['BloomLevel'];
   EntityType: NexusGenEnums['EntityType'];
@@ -554,7 +576,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "Association" | "Competency" | "ConceptualCategory" | "Course" | "Issuer" | "Query" | "Resource" | "Tag";
 
-export type NexusGenInputNames = "AssociationFilter" | "AssociationWhereInput" | "CertificateFilter" | "CertificateWhereInput" | "CompetencyFilter" | "CompetencyWhereInput" | "ConceptualCategoryFilter" | "ConceptualCategoryWhereInput" | "CourseFilter" | "CourseWhereInput" | "DateTimeFilter" | "IntFilter" | "IssuerFilter" | "IssuerOrderByInput" | "IssuerWhereInput" | "NullableDateTimeFilter" | "NullableStringFilter" | "ResourceFilter" | "ResourceOrderByInput" | "ResourceWhereInput" | "StringFilter" | "TagFilter" | "TagOrderByInput" | "TagWhereInput";
+export type NexusGenInputNames = "AssociationFilter" | "AssociationWhereInput" | "CertificateFilter" | "CertificateWhereInput" | "CompetencyFilter" | "CompetencyWhereInput" | "ConceptualCategoryFilter" | "ConceptualCategoryWhereInput" | "CourseFilter" | "CourseWhereInput" | "DateTimeFilter" | "IntFilter" | "IssuerFilter" | "IssuerOrderByInput" | "IssuerWhereInput" | "NullableDateTimeFilter" | "NullableStringFilter" | "ResourceFilter" | "ResourceOrderByInput" | "ResourceWhereInput" | "StringFilter" | "TagFilter" | "TagOrderByInput" | "TagWhereInput" | "UnitTestFilter" | "UnitTestWhereInput";
 
 export type NexusGenEnumNames = "AssociationType" | "BloomLevel" | "EntityType" | "OrderByArg";
 
